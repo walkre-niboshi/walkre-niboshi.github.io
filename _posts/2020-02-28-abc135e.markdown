@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "AtCoder Beginner Contest 135 E - Golf"
+date:   2020-02-28
+categories: contest
+---
+
+# 問題
+<https://atcoder.jp/contests/abc135/tasks/abc135_e>
+
+# 解説
+座標を適当に変換して$X \geq Y \geq 0$であると仮定してよい.
+
+$K \equiv 0 \pmod{2}$かつ$X+Y \equiv 1 \pmod{2}$の場合は, どんなに操作を行ってもx座標とy座標の和のパリティがゴールのx座標とy座標の和のパリティと一致しないので$-1$を出力する. それ以外の場合はゴールに到達する動かし方が存在する.
+
+以下, ゴールに到達する動かし方が存在する場合を考え, 最小のスコアを$N$とする.
+
+$n = \lceil \frac{X+Y}{K} \rceil$とする. スコアが$n$となるような動かし方が存在するならばそれが最小のスコアを達成する.
+
+$n = 1$のとき, $N = 1$であるかどうかは容易に判定できる. 以下, $N \neq 1$であるとし, $n = 1$であった場合は$n \leftarrow n+1$とする.
+
+更に, $n K \not\equiv X+Y \pmod{2}$の場合はスコア$n$の動かし方は存在しないので, $n \leftarrow n+1$とする.
+
+このとき, $X \geq K$または$n = 2$ならば次のようにしてスコア$n$の動かし方が実現できる. \\
+($n=2$のとき$h \leq K \leq h+X$が成り立っていることに注意)
+![](/assets/images/abc135e1.png)
+
+以下, $X < K$であるとする. このとき$\lceil \frac{X+Y}{K} \rceil \leq 2$より$n \leq 3$である. 更に$n \neq 1, 2$であるので$n = 3$であるが, 実際にスコア$3$の動かし方が次のようにして実現できる. 従って, $N = 3$である.
+![](/assets/images/abc135e2.png)
+
+# 提出
+<https://atcoder.jp/contests/abc135/submissions/10093264>
